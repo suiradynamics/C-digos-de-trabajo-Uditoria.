@@ -2,6 +2,14 @@ import pandas as pd
 
 df = pd.read_excel("clientes.xlsx")
 
-faltantes = df.isnull().sum()
+reporte = pd.DataFrame({
+    "Campo": df.columns,
+    "Vacios": df.isnull().sum().values
+})
 
-print(faltantes)
+reporte.to_excel(
+    "reporte_vacios.xlsx",
+    index=False
+)
+
+print(reporte)

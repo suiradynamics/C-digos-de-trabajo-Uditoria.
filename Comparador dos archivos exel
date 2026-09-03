@@ -1,0 +1,18 @@
+import pandas as pd
+
+archivo_a = pd.read_excel("sistema_a.xlsx")
+archivo_b = pd.read_excel("sistema_b.xlsx")
+
+faltantes = archivo_a[
+    ~archivo_a["Factura"].isin(
+        archivo_b["Factura"]
+    )
+]
+
+faltantes.to_excel(
+    "facturas_no_encontradas.xlsx",
+    index=False
+)
+
+print(faltantes)
+

@@ -1,0 +1,8 @@
+import pandas as pd
+
+df = pd.read_excel("hallazgos.xlsx")
+
+resultado = df["Riesgo"].value_counts()
+
+print(resultado)
+

@@ -1,0 +1,17 @@
+import pandas as pd
+import re
+
+df = pd.read_excel("clientes.xlsx")
+
+patron = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+
+invalidos = df[
+    ~df["Email"].astype(str).str.match(patron)
+]
+
+invalidos.to_excel(
+    "emails_invalidos.xlsx",
+    index=False
+)
+
+print(invalidos)

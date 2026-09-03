@@ -1,0 +1,15 @@
+import pandas as pd
+
+# Leer archivo Excel
+df = pd.read_excel("facturas.xlsx")
+
+# Encontrar duplicados
+duplicados = df[df.duplicated()]
+
+# Guardar resultado
+duplicados.to_excel(
+    "duplicados.xlsx",
+    index=False
+)
+
+print(f"Se encontraron {len(duplicados)} duplicados")
